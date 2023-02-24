@@ -1,15 +1,11 @@
-import Head from 'next/head';
 import Header from './Header';
+import { LayoutContainer } from './styles';
 
 export default function Layout({ children }) {
     return (
-        <>
-            <Head>
-                <link rel="shortcut icon" href="/favicon.ico" />
-                <title>KPOP</title>
-            </Head>
+        <LayoutContainer>
             <Header />
-            <div>{children}</div>
-        </>
+            {children}
+        </LayoutContainer>
     );
 }
