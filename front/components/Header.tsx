@@ -8,13 +8,17 @@ const Header = () => {
     return (
         <HeaderContainer>
             <nav>
-                <section>
-                    <Link href="#">로고</Link>
-                    <Link href="/auth/login">로그인</Link>
-                    <Link href="/auth/signup">회원가입</Link>
-                </section>
+                <ul className="authUtil">
+                    <li>
+                        <Link href="#">로고</Link>
+                    </li>
+                    <li>
+                        <Link href="/auth/login">로그인</Link>/
+                        <Link href="/auth/signup">회원가입</Link>
+                    </li>
+                </ul>
 
-                <section>
+                <ul className="routePath">
                     <Link href="/">
                         <span className={router.pathname === '/' ? 'active' : ''}>Home</span>
                     </Link>
@@ -24,7 +28,7 @@ const Header = () => {
                     <Link href="/chart">
                         <span className={router.pathname === '/chart' ? 'active' : ''}>차트</span>
                     </Link>
-                </section>
+                </ul>
             </nav>
         </HeaderContainer>
     );
