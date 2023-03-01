@@ -1,23 +1,30 @@
 {
+    // 컴파일러 옵션
     "compilerOptions": {
-        "target": "ES6",
-        "lib": ["dom", "dom.iterable", "esnext"],
-        "allowJs": true,
-        "skipLibCheck": true,
-        "strict": true,
-        "forceConsistentCasingInFileNames": true,
-        "noEmit": true,
-        "esModuleInterop": true,
-        "module": "esnext",
-        "moduleResolution": "node",
-        "resolveJsonModule": true,
-        "isolatedModules": true,
-        "jsx": "preserve",
-        "incremental": true,
-        "baseUrl": ".",
-        "types": ["@emotion/react/types/css-prop"],
+        "target": "ES6", // ECMAScript 목표 버전 설정
+        "module": "esnext", // 생성될 모듈 코드 설정
+        "lib": ["dom", "dom.iterable", "esnext"], // 컴파일 과정에서 사용될 라이브러리 파일 설정
+        "allowJs": true, // 자바스크립트 파일 컴파일 허용 여부
+        "jsx": "preserve", // 생성될 jsx 코드 설정
+        "declaration": true, // d.ts 파일 생성 설정
+        "composite": true, // 프로젝트 컴파일 활성화
+        "noEmit": true, // 출력 방출 유무 설정
+        "removeComments": true, // 출력시 주석 제거 설정
+        "strict": true, // 모든 엄격한 검사 유형 옵션 활성화
+        "noUnusedLocals": true, // 사용되지 않은 로컬이 있을 경우, 오류로 보고
+        "noUnusedParameters": true, // 사용되지 않은 매개변수가 있을 경우, 오류로 보고
+        "noFallthroughCasesInSwitch": true, // switch 문 이상하면 에러내기
+        "moduleResolution": "node" /* 모듈 분석 방법 설정: 'node' (Node.js) 또는 'classic' (TypeScript pre-1.6). */,
+        "baseUrl": ".", // 절대 경로가 아닌 모듈이 기본적으로 위치한 디렉토리 설정
+        "types": ["@emotion/react/types/css-prop"], // 컴파일 시 포함될 유형 선언 파일 입력
+        "esModuleInterop": true /* 모든 가져오기에 대한 네임스페이스 객체 생성을 통해 CommonJS와 ES 모듈 간의 상호 운용성을 제공. 'allowSyntheticDefaultImports' 암시 */,
+        "skipLibCheck": true, // 선언 파일 유형 검사 스킵
+        "forceConsistentCasingInFileNames": true, // 동일한 파일에 대한 일관되지 않은 케이스 참조를 허용하지 않음 대소문자 구별
+        "resolveJsonModule": true, // 확장자가 .json인 모듈의 import를 허용하는 설정이다.
+        "isolatedModules": true, // 각 파일을 별도 모듈로 변환
+        "incremental": true, // 증분 컴파일 활성화
         "jsxImportSource": "@emotion/react"
     },
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-    "exclude": ["node_modules"]
+    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"], // 컴파일 과정에서 포함할 파일
+    "exclude": ["node_modules"] // 빌드 제외 항목
 }

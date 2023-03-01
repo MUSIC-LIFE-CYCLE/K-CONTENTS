@@ -1,7 +1,11 @@
 import Header from './Header';
 import { LayoutContainer } from './styles';
 
-export default function Layout({ children }) {
+interface LayoutChildrenProps {
+    children: React.ReactNode;
+}
+
+export default function Layout({ children }: LayoutChildrenProps) {
     return (
         <LayoutContainer>
             <Header />

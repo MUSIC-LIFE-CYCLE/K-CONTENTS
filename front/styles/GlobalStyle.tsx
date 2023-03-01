@@ -76,6 +76,7 @@ export const globalStyles = (
             html {
                 font-size: 62.5%;
                 box-sizing: border-box;
+                background-color: #87cefa;
             }
         `}
     />

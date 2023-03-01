@@ -1,15 +1,36 @@
 {
-    "content": {
-        "artist": "HYNN",
-        "description": "박혜원 (HYNN) - 컴필레이션 앨범 [LET ME]",
-        "quantity": 1,
-        "date": "2023-02-22",
-        "price": "KRW 190,400원"
-    },
-    "imgUrl": [
-        "/images/elbum1.png",
-        "/images/elbum2.png",
-        "/images/elbum3.png",
-        "/images/elbum4.png"
+    "content": [
+        {
+            "artist": "HYNN",
+            "description": "박혜원 (HYNN) - 컴필레이션 앨범 [LET ME]",
+            "quantity": 1,
+            "date": "2023-02-22",
+            "price": "KRW 190,400원",
+            "imgUrl": "/images/elbum1.png"
+        },
+        {
+            "artist": "HYNN",
+            "description": "박혜원 (HYNN) - 컴필레이션 앨범 [LET ME]",
+            "quantity": 1,
+            "date": "2023-02-22",
+            "price": "KRW 190,400원",
+            "imgUrl": "/images/elbum2.png"
+        },
+        {
+            "artist": "HYNN",
+            "description": "박혜원 (HYNN) - 컴필레이션 앨범 [LET ME]",
+            "quantity": 1,
+            "date": "2023-02-22",
+            "price": "KRW 190,400원",
+            "imgUrl": "/images/elbum3.png"
+        },
+        {
+            "artist": "HYNN",
+            "description": "박혜원 (HYNN) - 컴필레이션 앨범 [LET ME]",
+            "quantity": 1,
+            "date": "2023-02-22",
+            "price": "KRW 190,400원",
+            "imgUrl": "/images/elbum4.png"
+        }
     ]
 }

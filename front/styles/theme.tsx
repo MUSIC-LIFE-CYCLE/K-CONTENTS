@@ -9,6 +9,13 @@ const theme: Theme = {
         red: '#ff0000',
         halfBlack: 'rgba(0,0,0,0.5)',
     },
+    fontSize: {
+        small: '1rem',
+        normal: '1.2rem',
+        base: '1.4rem',
+        title: '1.6rem',
+        big: '2.4rem',
+    },
 };
 
 export default theme;

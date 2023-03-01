@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { ProductContent } from 'types/ProductType';
 import Image from 'next/image';
+import { GetServerSideProps } from 'next';
 
 const GoodsContainer = styled.section`
     max-width: 100%;
@@ -16,6 +17,7 @@ const GoodsContent = styled.section`
         & div {
             display: flex;
             justify-content: flex-end;
+            min-height: 4rem;
             padding-right: 2rem;
 
             & select {
@@ -25,40 +27,42 @@ const GoodsContent = styled.section`
         & ul {
             display: flex;
             justify-content: space-around;
-            background-color: ${props => props.theme.colors.blue};
+            min-height: 4rem;
+            align-items: center;
+            border-top: 0.1rem solid #d3d3d3;
+            border-bottom: 0.1rem solid #d3d3d3;
+
+            & li {
+                & button[type='button'] {
+                    background-color: transparent;
+                    border: 0;
+                }
+            }
         }
+    }
+
+    & .productListWrap {
+        padding: 2rem 2rem 0 2rem;
     }
 `;
 
 const goods = () => {
-    const [getProduct, setGetProduct] = useState<ProductContent>({
-        content: {
-            artist: '',
-            description: '',
-            quantity: 1,
-            date: '',
-            price: '',
-        },
-        imgUrl: [],
-    });
+    const [getProduct, setGetProduct] = useState<ProductContent[]>([]);
 
     const fetchData = async () => {
         try {
             const res = await axios.get('/api/product', {
                 headers: { 'Content-Type': 'application/json' },
             });
-            // const str = JSON.stringify(res);
-            console.log('api api api api', res);
-            setGetProduct(res.data.data);
+            setGetProduct(res.data.data.content);
         } catch (err: unknown) {
             console.log(err);
         }
     };
+
     useEffect(() => {
         fetchData();
     }, []);
-    // const result = getProduct.map(e => e);
-    console.log('asdasd', getProduct);
 
     return (
         <GoodsContainer>
@@ -66,7 +70,10 @@ const goods = () => {
                 <div className="filterNav">
                     <div>
                         <select>
-                            <option>필터링</option>
+                            <option selected>필터링</option>
+                            <option>최신순</option>
+                            <option>낮은가격순</option>
+                            <option>높은가격순</option>
                         </select>
                     </div>
 
@@ -79,22 +86,27 @@ const goods = () => {
                         </li>
                     </ul>
                 </div>
-                <div>
-                    {/* <ul>
-                        <li>
-                            <Image src={getProduct}
-                        </li>
-                    </ul> */}
-                    <ul>
-                        <li>
-                            <Image src={getProduct.imgUrl} />
-                        </li>
-                        <li>{getProduct.content.artist}</li>
-                        <li>{getProduct.content.date}</li>
-                        <li>{getProduct.content.description}</li>
-                        <li>{getProduct.content.price}</li>
-                        <li>{getProduct.content.quantity}</li>
-                    </ul>
+                <div className="productListWrap">
+                    {getProduct.map((tem, idx) => {
+                        return (
+                            <ul key={idx}>
+                                <li>
+                                    <Image
+                                        src={tem.imgUrl}
+                                        width={100}
+                                        height={100}
+                                        alt="Elbum Image"
+                                        priority
+                                    />
+                                </li>
+                                <li>{tem.artist}</li>
+                                <li>{tem.date}</li>
+                                <li>{tem.description}</li>
+                                <li>{tem.price}</li>
+                                <li>{tem.quantity}</li>
+                            </ul>
+                        );
+                    })}
                 </div>
             </GoodsContent>
         </GoodsContainer>
@@ -103,11 +115,11 @@ const goods = () => {
 
 export default goods;
 
-// export async function getServerSideProps() {
-//     const { results } = await (await fetch(`http://localhost:3000/api/product`)).json();
+// export const getServerSideProps: GetServerSideProps = async () => {
+//     const { results } = await axios.get('http://localhost:3000/api/product');
 //     return {
 //         props: {
 //             results,
 //         },
 //     };
-// }
+// };

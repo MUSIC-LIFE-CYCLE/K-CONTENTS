@@ -10,5 +10,12 @@ declare module '@emotion/react' {
             red: string;
             halfBlack: string;
         };
+        fontSize: {
+            small: string;
+            normal: string;
+            base: string;
+            title: string;
+            big: string;
+        };
     }
 }

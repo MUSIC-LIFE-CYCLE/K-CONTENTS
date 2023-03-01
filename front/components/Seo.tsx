@@ -1,6 +1,10 @@
 import Head from 'next/head';
 
-const Seo = ({ title }) => {
+interface SeoTitleProps {
+    title: string;
+}
+
+const Seo = ({ title }: SeoTitleProps) => {
     return (
         <Head>
             <title>{title}</title>
