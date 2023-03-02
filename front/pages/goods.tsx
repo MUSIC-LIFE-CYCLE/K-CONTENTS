@@ -1,10 +1,9 @@
 import styled from '@emotion/styled';
 import axios from 'axios';
-import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { ProductContent } from 'types/ProductType';
 import Image from 'next/image';
-import { GetServerSideProps } from 'next';
+import { Elbum } from 'components/Elbum';
 
 const GoodsContainer = styled.section`
     max-width: 100%;
@@ -43,6 +42,18 @@ const GoodsContent = styled.section`
 
     & .productListWrap {
         padding: 2rem 2rem 0 2rem;
+
+        & article {
+            padding-bottom: 2rem;
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            & ul {
+                & li {
+                    font-size: ${props => props.theme.fontSize.normal};
+                }
+            }
+        }
     }
 `;
 
@@ -69,11 +80,11 @@ const goods = () => {
             <GoodsContent>
                 <div className="filterNav">
                     <div>
-                        <select>
-                            <option selected>필터링</option>
-                            <option>최신순</option>
-                            <option>낮은가격순</option>
-                            <option>높은가격순</option>
+                        <select defaultValue="filter">
+                            <option value="filter">필터링</option>
+                            <option value="newArrival">최신순</option>
+                            <option value="lowPrice">낮은가격순</option>
+                            <option value="highPrice">높은가격순</option>
                         </select>
                     </div>
 
@@ -89,22 +100,17 @@ const goods = () => {
                 <div className="productListWrap">
                     {getProduct.map((tem, idx) => {
                         return (
-                            <ul key={idx}>
-                                <li>
-                                    <Image
-                                        src={tem.imgUrl}
-                                        width={100}
-                                        height={100}
-                                        alt="Elbum Image"
-                                        priority
-                                    />
-                                </li>
-                                <li>{tem.artist}</li>
-                                <li>{tem.date}</li>
-                                <li>{tem.description}</li>
-                                <li>{tem.price}</li>
-                                <li>{tem.quantity}</li>
-                            </ul>
+                            <Elbum key={idx}>
+                                <Elbum.Thumbnail imgUrl={tem.imgUrl} />
+
+                                <Elbum.Content
+                                    artist={tem.artist}
+                                    description={tem.description}
+                                    quantity={tem.quantity}
+                                    date={tem.date}
+                                    price={tem.price}
+                                ></Elbum.Content>
+                            </Elbum>
                         );
                     })}
                 </div>
