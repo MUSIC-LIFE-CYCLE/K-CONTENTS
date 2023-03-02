@@ -1,5 +1,6 @@
 import Header from './Header';
 import styled from '@emotion/styled';
+import { LayoutChildrenProps } from 'types/PropsType';
 
 const LayoutContainer = styled.section`
     max-width: 42rem;
@@ -14,10 +15,6 @@ const LayoutContainer = styled.section`
         color: #6495ed;
     }
 `;
-
-interface LayoutChildrenProps {
-    children: React.ReactNode;
-}
 
 export default function Layout({ children }: LayoutChildrenProps) {
     return (

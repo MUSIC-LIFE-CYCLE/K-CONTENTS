@@ -25,6 +25,6 @@
         "incremental": true, // 증분 컴파일 활성화
         "jsxImportSource": "@emotion/react"
     },
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"], // 컴파일 과정에서 포함할 파일
+    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.json"], // 컴파일 과정에서 포함할 파일
     "exclude": ["node_modules"] // 빌드 제외 항목
 }

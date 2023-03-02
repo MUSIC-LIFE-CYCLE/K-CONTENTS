@@ -1,8 +1,7 @@
 import styled from '@emotion/styled';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { ProductContent } from 'types/ProductType';
-import Image from 'next/image';
+import { ProductContentAll } from 'types/ProductType';
 import { Elbum } from 'components/Elbum';
 
 const GoodsContainer = styled.section`
@@ -42,23 +41,11 @@ const GoodsContent = styled.section`
 
     & .productListWrap {
         padding: 2rem 2rem 0 2rem;
-
-        & article {
-            padding-bottom: 2rem;
-            display: flex;
-            gap: 2rem;
-            justify-content: center;
-            & ul {
-                & li {
-                    font-size: ${props => props.theme.fontSize.normal};
-                }
-            }
-        }
     }
 `;
 
 const goods = () => {
-    const [getProduct, setGetProduct] = useState<ProductContent[]>([]);
+    const [getProduct, setGetProduct] = useState<ProductContentAll[]>([]);
 
     const fetchData = async () => {
         try {
@@ -98,7 +85,7 @@ const goods = () => {
                     </ul>
                 </div>
                 <div className="productListWrap">
-                    {getProduct.map((tem, idx) => {
+                    {getProduct.map((tem: ProductContentAll, idx: number) => {
                         return (
                             <Elbum key={idx}>
                                 <Elbum.Thumbnail imgUrl={tem.imgUrl} />
