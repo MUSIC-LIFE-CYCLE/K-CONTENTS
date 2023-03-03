@@ -1,5 +1,5 @@
 {
-    "content": [
+    "elbum": [
         {
             "artist": "HYNN",
             "description": "박혜원 (HYNN) - 컴필레이션 앨범 [LET ME]",
@@ -31,6 +31,40 @@
             "date": "2023-02-22",
             "price": "KRW 190,400원",
             "imgUrl": "/images/elbum4.png"
+        }
+    ],
+    "lightStick": [
+        {
+            "artist": "윤하",
+            "description": "윤하(YOUNHA) 공식 응원봉 - [ENDTHEORY]",
+            "quantity": 1,
+            "date": "2023-02-22",
+            "price": "KRW 39,000원",
+            "imgUrl": "/images/cheer1.jpg"
+        },
+        {
+            "artist": "윤하",
+            "description": "윤하(YOUNHA) 공식 응원봉 - [ENDTHEORY]",
+            "quantity": 1,
+            "date": "2023-02-22",
+            "price": "KRW 39,000원",
+            "imgUrl": "/images/cheer2.png"
+        },
+        {
+            "artist": "윤하",
+            "description": "윤하(YOUNHA) 공식 응원봉 - [ENDTHEORY]",
+            "quantity": 1,
+            "date": "2023-02-22",
+            "price": "KRW 39,000원",
+            "imgUrl": "/images/cheer3.jpg"
+        },
+        {
+            "artist": "윤하",
+            "description": "윤하(YOUNHA) 공식 응원봉 - [ENDTHEORY]",
+            "quantity": 1,
+            "date": "2023-02-22",
+            "price": "KRW 39,000원",
+            "imgUrl": "/images/cheer4.jpg"
         }
     ]
 }

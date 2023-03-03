@@ -23,5 +23,8 @@
   },
   "devDependencies": {
     "@emotion/babel-plugin": "^11.10.6"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }

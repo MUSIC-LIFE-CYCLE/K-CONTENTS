@@ -34,6 +34,10 @@ const GoodsContent = styled.section`
                 & button[type='button'] {
                     background-color: transparent;
                     border: 0;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
                 }
             }
         }
@@ -45,14 +49,17 @@ const GoodsContent = styled.section`
 `;
 
 const goods = () => {
-    const [getProduct, setGetProduct] = useState<ProductContentAll[]>([]);
+    const [getElbumList, setGetElbumList] = useState<ProductContentAll[]>([]);
+    const [getCheerList, setGetCheerList] = useState<ProductContentAll[]>([]);
+    const [isGoodsToggle, setIsGoodsToggle] = useState(false);
 
     const fetchData = async () => {
         try {
             const res = await axios.get('/api/product', {
                 headers: { 'Content-Type': 'application/json' },
             });
-            setGetProduct(res.data.data.content);
+            setGetElbumList(res.data.data.elbum);
+            setGetCheerList(res.data.data.lightStick);
         } catch (err: unknown) {
             console.log(err);
         }
@@ -68,7 +75,9 @@ const goods = () => {
                 <div className="filterNav">
                     <div>
                         <select defaultValue="filter">
-                            <option value="filter">필터링</option>
+                            <option value="filter" disabled>
+                                필터링
+                            </option>
                             <option value="newArrival">최신순</option>
                             <option value="lowPrice">낮은가격순</option>
                             <option value="highPrice">높은가격순</option>
@@ -76,30 +85,56 @@ const goods = () => {
                     </div>
 
                     <ul>
-                        <li>
-                            <button type="button">앨범</button>
+                        <li onClick={() => setIsGoodsToggle(false)}>
+                            <button
+                                type="button"
+                                className={isGoodsToggle === false ? 'active' : ''}
+                            >
+                                앨범
+                            </button>
                         </li>
-                        <li>
-                            <button type="button">응원봉</button>
+                        <li onClick={() => setIsGoodsToggle(true)}>
+                            <button
+                                type="button"
+                                className={isGoodsToggle === true ? 'active' : ''}
+                            >
+                                응원봉
+                            </button>
                         </li>
                     </ul>
                 </div>
                 <div className="productListWrap">
-                    {getProduct.map((tem: ProductContentAll, idx: number) => {
-                        return (
-                            <Elbum key={idx}>
-                                <Elbum.Thumbnail imgUrl={tem.imgUrl} />
+                    {isGoodsToggle
+                        ? getCheerList.map((tem: ProductContentAll, idx: number) => {
+                              return (
+                                  <Elbum key={idx}>
+                                      <Elbum.Thumbnail imgUrl={tem.imgUrl} />
 
-                                <Elbum.Content
-                                    artist={tem.artist}
-                                    description={tem.description}
-                                    quantity={tem.quantity}
-                                    date={tem.date}
-                                    price={tem.price}
-                                ></Elbum.Content>
-                            </Elbum>
-                        );
-                    })}
+                                      <Elbum.Content
+                                          artist={tem.artist}
+                                          description={tem.description}
+                                          quantity={tem.quantity}
+                                          date={tem.date}
+                                          price={tem.price}
+                                      ></Elbum.Content>
+                                  </Elbum>
+                              );
+                          })
+                        : getElbumList.map((tem: ProductContentAll, idx: number) => {
+                              return (
+                                  <Elbum key={idx}>
+                                      <Elbum.Thumbnail imgUrl={tem.imgUrl} />
+
+                                      <Elbum.Content
+                                          artist={tem.artist}
+                                          description={tem.description}
+                                          quantity={tem.quantity}
+                                          date={tem.date}
+                                          price={tem.price}
+                                      ></Elbum.Content>
+                                  </Elbum>
+                              );
+                          })}
                 </div>
             </GoodsContent>
         </GoodsContainer>
