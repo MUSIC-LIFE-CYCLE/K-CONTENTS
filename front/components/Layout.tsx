@@ -4,7 +4,7 @@ import { LayoutChildrenProps } from 'types/PropsType';
 
 const LayoutContainer = styled.section`
     max-width: 42rem;
-    min-height: 100vh;
+    min-height: 20rem;
     margin: 0 auto;
     border: 0.1rem solid #6495ed;
     border-radius: 0.4rem;

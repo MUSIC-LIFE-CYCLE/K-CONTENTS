@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
 import Link from 'next/link';
 import GoogleSymbol from 'public/images/googleSymbol.png';
+import NaverSymbol from 'public/images/naverSymbol.png';
+import KakaoLogin from 'public/images/kakao.png';
 import Image from 'next/image';
 import { useSession, signIn, signOut } from 'next-auth/react';
 import { Session } from 'next-auth';
@@ -63,26 +65,24 @@ const LoginContent = styled.section`
                 & dl {
                     & dt {
                         & .loginBtn {
-                            padding: 1.4rem;
+                            padding: 1.9rem 1.4rem;
                             border: 0;
-                            background-color: #f0ffff;
-                            border-radius: 0.4rem;
+                            background-color: #fff;
                             font-size: 1.4rem;
-                            line-height: 2rem;
                             width: calc(100% - 32%);
                             font-weight: 600;
                             box-shadow: 0 2px 1px 0 rgba(155, 155, 155, 0.5);
 
                             &:hover {
                                 cursor: pointer;
-                                opacity: 0.8;
+                                background-color: #ead2a8;
                             }
                         }
 
                         & .googleLogin {
                             margin-top: 1rem;
                             padding: 1.4rem;
-                            background-color: #f0ffff;
+                            background-color: #fff;
                             border: 1px solid transparent;
                             font-weight: 600;
                             box-shadow: 0 2px 1px 0 rgba(155, 155, 155, 0.5);
@@ -90,8 +90,6 @@ const LoginContent = styled.section`
                             & span {
                                 margin-right: 1rem;
                                 & img {
-                                    width: 24px;
-                                    height: 24px;
                                     vertical-align: middle;
                                 }
                             }
@@ -105,6 +103,39 @@ const LoginContent = styled.section`
                                 background-color: #4285f4;
                             }
                         }
+
+                        & .kakaoLogin {
+                            margin-top: 1rem;
+                            border: 1px solid transparent;
+                            width: calc(100% - 32%);
+                            box-sizing: content-box;
+                            background-color: transparent;
+                        }
+
+                        & .naverLogin {
+                            background-color: #03c75a;
+                            border: 1px solid transparent;
+                            width: calc(100% - 32%);
+                            margin-top: 1rem;
+                            padding: 1rem;
+                            font-weight: 600;
+                            & span {
+                                margin-right: 1rem;
+                                & img {
+                                    vertical-align: middle;
+                                }
+                            }
+
+                            & small {
+                                font-size: 1.4rem;
+                                color: ${props => props.theme.colors.white};
+                            }
+
+                            &:hover {
+                                cursor: pointer;
+                                opacity: 0.8;
+                            }
+                        }
                     }
                 }
             }
@@ -113,8 +144,8 @@ const LoginContent = styled.section`
 `;
 
 const Login = () => {
-    const { data, status }: Session = useSession();
-    console.log(data, status, ' login');
+    const { data, status } = useSession();
+    console.log(data, status, Session, ' login');
 
     return (
         <LoginContainer>
@@ -160,6 +191,21 @@ const Login = () => {
                                         로그인
                                     </button>
                                 </dt>
+
+                                <dt>
+                                    <button type="button" className="naverLogin">
+                                        <span>
+                                            <Image
+                                                src={NaverSymbol}
+                                                alt="naverSymbol"
+                                                width={32}
+                                                height={32}
+                                            />
+                                        </span>
+                                        <small>네이버 로그인</small>
+                                    </button>
+                                </dt>
+
                                 <dt>
                                     <button
                                         type="button"
@@ -176,15 +222,19 @@ const Login = () => {
                                         </span>
                                         <small>Google</small>
                                     </button>
-                                </dt>
-                                <dt>
-                                    <button type="button" className="kakaoLogin">
-                                        KaKao
+                                    <button type="button" onClick={signOut}>
+                                        Logout
                                     </button>
                                 </dt>
+
                                 <dt>
-                                    <button type="button" className="naverLogin">
-                                        Naver
+                                    <button type="button" className="kakaoLogin">
+                                        <Image
+                                            src={KakaoLogin}
+                                            width={285}
+                                            height={54}
+                                            alt="kakaoLogin"
+                                        />
                                     </button>
                                 </dt>
                             </dl>
