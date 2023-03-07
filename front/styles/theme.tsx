@@ -8,6 +8,7 @@ const theme: Theme = {
         blue: '#0000ff',
         red: '#ff0000',
         halfBlack: 'rgba(0,0,0,0.5)',
+        themeColor: '#6495ed',
     },
     fontSize: {
         small: '1rem',

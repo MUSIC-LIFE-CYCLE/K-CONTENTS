@@ -5,7 +5,9 @@ import NaverSymbol from 'public/images/naverSymbol.png';
 import KakaoLogin from 'public/images/kakao.png';
 import Image from 'next/image';
 import { useSession, signIn, signOut } from 'next-auth/react';
-import { Session } from 'next-auth';
+import { useAppDispatch, useAppSelector } from 'state/store';
+import { getUserEmail, getUserName, getUserToken } from 'state/slice/authSlice';
+import { useEffect } from 'react';
 
 const LoginContainer = styled.section`
     max-width: 100%;
@@ -110,6 +112,11 @@ const LoginContent = styled.section`
                             width: calc(100% - 32%);
                             box-sizing: content-box;
                             background-color: transparent;
+
+                            &:hover {
+                                cursor: pointer;
+                                opacity: 0.8;
+                            }
                         }
 
                         & .naverLogin {
@@ -145,7 +152,17 @@ const LoginContent = styled.section`
 
 const Login = () => {
     const { data, status } = useSession();
-    console.log(data, status, Session, ' login');
+    const dispatch = useAppDispatch();
+
+    console.log(data, status);
+
+    useEffect(() => {
+        if (status === 'authenticated') {
+            dispatch(getUserName(data.user?.name));
+            dispatch(getUserEmail(data.user?.email));
+            dispatch(getUserToken(data.accessToken));
+        }
+    }, [data, status]);
 
     return (
         <LoginContainer>
@@ -193,7 +210,11 @@ const Login = () => {
                                 </dt>
 
                                 <dt>
-                                    <button type="button" className="naverLogin">
+                                    <button
+                                        type="button"
+                                        className="naverLogin"
+                                        onClick={() => signIn('naver')}
+                                    >
                                         <span>
                                             <Image
                                                 src={NaverSymbol}
@@ -222,18 +243,20 @@ const Login = () => {
                                         </span>
                                         <small>Google</small>
                                     </button>
-                                    <button type="button" onClick={signOut}>
-                                        Logout
-                                    </button>
                                 </dt>
 
                                 <dt>
-                                    <button type="button" className="kakaoLogin">
+                                    <button
+                                        type="button"
+                                        className="kakaoLogin"
+                                        onClick={() => signIn('kakao')}
+                                    >
                                         <Image
                                             src={KakaoLogin}
                                             width={285}
                                             height={54}
                                             alt="kakaoLogin"
+                                            priority
                                         />
                                     </button>
                                 </dt>

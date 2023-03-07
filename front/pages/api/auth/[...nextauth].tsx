@@ -10,30 +10,39 @@ export const authOptions: NextAuthOptions = {
             clientId: process.env.GOOGLE_CLIENT_ID,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET,
         }),
-        // NaverProvider({
-        //     clientId:
-        // })
+        NaverProvider({
+            clientId: process.env.NAVER_CLIENT_ID,
+            clientSecret: process.env.NAVER_CLIENT_SECRET,
+        }),
+        KaKaoProvider({
+            clientId: process.env.KAKAO_CLIENT_ID,
+            clientSecret: process.env.KAKAO_CLIENT_SECRET,
+        }),
     ],
     callbacks: {
-        async signIn({ user, account, profile, email, credentials }) {
-            const isAllowedToSignIn = true;
-            if (isAllowedToSignIn) {
-                return true;
-            } else {
-                console.log('로그인 실패');
-                alert('로그인 실패');
-                return '/';
-            }
+        // async jwt({ token, account, profile }) {
+        //     console.log(token, 'token', account, '어카운트', profile, '프로파일');
+        //     return token;
+        // },
+        async session({ session, token }) {
+            session.accessToken = token.sub;
+
+            return session;
         },
-        async jwt({ token, account, profile }) {
-            // Persist the OAuth access_token and or the user id to the token right after signin
-            // if (account) {
-            //     token.accessToken = account.access_token;
-            //     token.id = profile.id;
-            // }
-            console.log(token, 'token');
-            return token;
-        },
+        // async signIn({ user, account, profile, email, credentials }) {
+        //     const isAllowedToSignIn = true;
+        //     if (isAllowedToSignIn) {
+        //         return true;
+        //     } else {
+        //         console.log('로그인 실패');
+        //         alert('로그인 실패');
+        //         return '/';
+        //     }
+        // },
+
+        // async session({ token, user, session }) {
+        //     console.log(token, '토큰', user, '유저', session, ' 세션');
+        // },
     },
 
     pages: {
