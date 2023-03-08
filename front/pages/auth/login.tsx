@@ -156,12 +156,16 @@ const Login = () => {
 
     console.log(data, status);
 
-    useEffect(() => {
+    const dispatchLoginStatus = () => {
         if (status === 'authenticated') {
             dispatch(getUserName(data.user?.name));
             dispatch(getUserEmail(data.user?.email));
             dispatch(getUserToken(data.accessToken));
         }
+    };
+
+    useEffect(() => {
+        dispatchLoginStatus();
     }, [data, status]);
 
     return (

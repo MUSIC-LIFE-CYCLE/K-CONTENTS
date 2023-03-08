@@ -6,7 +6,7 @@ const LayoutContainer = styled.section`
     max-width: 42rem;
     min-height: 20rem;
     margin: 0 auto;
-    border: 0.1rem solid #6495ed;
+    border: 0.1rem solid ${props => props.theme.colors.themeColor};
     border-radius: 0.4rem;
     background-color: ${props => props.theme.colors.white};
 

@@ -3,7 +3,6 @@ import styled from '@emotion/styled';
 import Link from 'next/link';
 import { useAppSelector } from 'state/store';
 import { signOut } from 'next-auth/react';
-import { useState } from 'react';
 
 const HeaderContainer = styled.header`
     font-size: ${props => props.theme.fontSize.base};
@@ -20,6 +19,14 @@ const HeaderContainer = styled.header`
             gap: 2rem;
             align-items: center;
             justify-content: space-around;
+
+            & li {
+                & a {
+                    &:hover {
+                        font-weight: 600;
+                    }
+                }
+            }
         }
 
         & .authUtil {
@@ -33,6 +40,7 @@ const HeaderContainer = styled.header`
                     &:hover {
                         cursor: pointer;
                         color: ${props => props.theme.colors.themeColor};
+                        font-weight: 600;
                     }
                 }
             }
@@ -40,6 +48,12 @@ const HeaderContainer = styled.header`
 
         & .routePath {
             min-height: 4rem;
+
+            & a {
+                &:hover {
+                    font-weight: 600;
+                }
+            }
         }
     }
 `;
@@ -47,8 +61,6 @@ const HeaderContainer = styled.header`
 const Header = () => {
     const router = useRouter();
     const isLoginStatus = useAppSelector(state => state.auth);
-    const [isLogin, setIsLogin] = useState(isLoginStatus.token ? true : false);
-    console.log(isLoginStatus);
 
     return (
         <HeaderContainer>
@@ -57,7 +69,7 @@ const Header = () => {
                     <li>
                         <Link href="#">로고</Link>
                     </li>
-                    {isLogin ? (
+                    {isLoginStatus.token ? (
                         <li className="logout">
                             <button type="button" onClick={signOut}>
                                 로그아웃
