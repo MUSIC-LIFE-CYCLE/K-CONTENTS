@@ -4,8 +4,8 @@ import GoogleSymbol from 'public/images/googleSymbol.png';
 import NaverSymbol from 'public/images/naverSymbol.png';
 import KakaoLogin from 'public/images/kakao.png';
 import Image from 'next/image';
-import { useSession, signIn, signOut } from 'next-auth/react';
-import { useAppDispatch, useAppSelector } from 'state/store';
+import { useSession, signIn } from 'next-auth/react';
+import { useAppDispatch } from 'state/store';
 import { getUserEmail, getUserName, getUserToken } from 'state/slice/authSlice';
 import { useEffect } from 'react';
 

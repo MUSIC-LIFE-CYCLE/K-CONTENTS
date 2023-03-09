@@ -7,10 +7,6 @@ import { SessionProvider } from 'next-auth/react';
 import { Provider } from 'react-redux';
 import store from 'state/store';
 
-if (process.env.NEXT_PUBLIC_API_MOCKING === 'enabled') {
-    import('mocks');
-}
-
 export default function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
     return (
         <Provider store={store}>

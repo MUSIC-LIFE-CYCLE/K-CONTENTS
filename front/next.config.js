@@ -2,6 +2,7 @@
 
 const nextConfig = {
     reactStrictMode: false,
+    runtime: 'nodejs',
 };
 
 module.exports = nextConfig;

@@ -7,7 +7,7 @@ interface initialAuthState {
     token: string;
 }
 
-const initialState: initSialauthState = {
+const initialState: initialAuthState = {
     name: '',
     email: '',
     token: '',

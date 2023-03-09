@@ -1,27 +1,18 @@
 import { useEffect } from 'react';
 import axios from 'axios';
+import { GetServerSideProps } from 'next';
 
-export default function Home({ results }) {
-    // const fetchData = async () => {
-    //     const res = await axios.get('/mocks');
-    //     console.log(res);
-    // };
-
-    // useEffect(() => {
-    //     fetchData();
-    // }, []);
-
+export default function Home({ results }: any) {
     console.log(results, ' sSRSSRSSRSSR');
     return <>Hello world</>;
 }
 
-export async function getServerSideProps() {
-    let results = await fetch('http://localhost:3000/mocks');
-    results = JSON.parse(JSON.stringify(results));
+export const getServerSideProps: GetServerSideProps = async () => {
+    let results = await axios.get('http://localhost:3000/api/product');
 
     return {
         props: {
             results,
         },
     };
-}
+};

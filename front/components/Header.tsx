@@ -71,7 +71,7 @@ const Header = () => {
                     </li>
                     {isLoginStatus.token ? (
                         <li className="logout">
-                            <button type="button" onClick={signOut}>
+                            <button type="button" onClick={() => signOut()}>
                                 로그아웃
                             </button>
                         </li>

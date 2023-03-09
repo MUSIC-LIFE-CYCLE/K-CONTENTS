@@ -39,10 +39,6 @@ export const authOptions: NextAuthOptions = {
         //         return '/';
         //     }
         // },
-
-        // async session({ token, user, session }) {
-        //     console.log(token, '토큰', user, '유저', session, ' 세션');
-        // },
     },
 
     pages: {
