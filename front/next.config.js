@@ -2,7 +2,11 @@
 
 const nextConfig = {
     reactStrictMode: false,
-    runtime: 'nodejs',
+    swcMinify: true,
+
+    compiler: {
+        emotion: true,
+    },
 };
 
 module.exports = nextConfig;

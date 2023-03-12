@@ -23,8 +23,10 @@ export interface ProductInterface extends ProductImgUrl {
 }
 
 export interface ProductDataAll {
-    elbum: ProductInterface[];
-    lightStick: ProductInterface[];
+    data: {
+        elbum: ProductInterface[];
+        lightStick: ProductInterface[];
+    };
 }
 
 export interface ProductContentAll extends ProductContent {

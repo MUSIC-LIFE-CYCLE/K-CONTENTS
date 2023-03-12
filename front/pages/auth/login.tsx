@@ -14,8 +14,6 @@ const LoginContainer = styled.section`
 `;
 
 const LoginContent = styled.section`
-    display: flex;
-    justify-content: center;
     & form {
         width: 100%;
         text-align: center;
